@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HeaderBorderCustomization.MainPage"
+             xmlns:local="clr-namespace:HeaderBorderCustomization.ViewModel"
+             xmlns:datagrid="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid">
+
+
+    <ContentPage.BindingContext>
+        <local:OrderDetailsViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <datagrid:SfDataGrid x:Name="datagrid" ItemsSource="{Binding OrderInfoCollection}" GridLinesVisibility="Both" 
+                             HeaderGridLinesVisibility="Both"
+                             VerticalOptions="CenterAndExpand" >
+
+            <datagrid:SfDataGrid.DefaultStyle>
+                <datagrid:DataGridStyle  
+                       HeaderGridLineColor="DarkBlue"  
+                       GridLineColor="YellowGreen"  
+                       GridLineStrokeThickness="1"
+                       HeaderGridLineStrokeThickness="5" />
+            </datagrid:SfDataGrid.DefaultStyle>
+
+            <datagrid:SfDataGrid.StackedHeaderRows>
+                <datagrid:DataGridStackedHeaderRow>
+                    <datagrid:DataGridStackedHeaderRow.Columns>
+                        <datagrid:DataGridStackedColumn 
+                    ColumnMappingNames="OrderID" 
+                    Text="Order Details" 
+                    MappingName="OrderDetails" />
+
+                        <datagrid:DataGridStackedColumn 
+                    ColumnMappingNames="CustomerID,Customer" 
+                    Text="Customer Details" 
+                    MappingName="Customer Details" />
+
+                        <datagrid:DataGridStackedColumn 
+                          ColumnMappingNames="ShipCity,ShipCountry,Price,IsAvailable,Quantity" 
+                          Text="Customer Details" 
+                          MappingName="Shipping Details" />
+
+                    </datagrid:DataGridStackedHeaderRow.Columns>
+                </datagrid:DataGridStackedHeaderRow>
+            </datagrid:SfDataGrid.StackedHeaderRows>
+        </datagrid:SfDataGrid>
+    </StackLayout>
+
+</ContentPage>
